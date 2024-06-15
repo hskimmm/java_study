@@ -1,11 +1,15 @@
 package weekly.ex2;
 
-import org.w3c.dom.ls.LSOutput;
-
 public class Product {
     private String name; //상품명
     private int price; //상품가격
     private int stock; //상품재고량
+
+    public Product(String name, int price, int stock) {
+        this.name = name;
+        this.price = price;
+        this.stock = stock;
+    }
 
     public String getName() {
         return name;
@@ -28,12 +32,6 @@ public class Product {
     }
 
     public void setStock(int stock) {
-        this.stock = stock;
-    }
-
-    public Product(String name, int price, int stock) {
-        this.name = name;
-        this.price = price;
         this.stock = stock;
     }
 

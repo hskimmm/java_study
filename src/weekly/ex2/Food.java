@@ -8,13 +8,21 @@ public class Food extends Product{
         this.expirationDate = expirationDate;
     }
 
+    public int getExpirationDate() {
+        return expirationDate;
+    }
+
+    public void setExpirationDate(int expirationDate) {
+        this.expirationDate = expirationDate;
+    }
+
     public void calculatePrice() {
         if(expirationDate <= 7) {
-            double discount = super.getPrice() * 0.2;
+            double discount = getPrice() * 0.2;
             System.out.println("===============================");
-            System.out.println("입력 금액 = " + super.getPrice());
+            System.out.println("입력 금액 = " + getPrice());
             System.out.println("20% 할인 가격 = " + Math.round(discount));
-            System.out.println("가격 20% 할인 한 합산 가격 = " + Math.round(super.getPrice() - discount) + "원입니다.");
+            System.out.println("가격 20% 할인 한 합산 가격 = " + Math.round(getPrice() - discount) + "원입니다.");
         } else {
             super.calculatePrice();
         }

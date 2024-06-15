@@ -8,19 +8,24 @@ public class Clothing extends Product{
         this.size = size;
     }
 
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
     @Override
     public void calculatePrice() {
         if(size >= 100) {
-            int addPrice = super.getPrice() / 10;
+            int addPrice = getPrice() / 10;
             System.out.println("===============================");
-            System.out.println("입력 금액 = " + super.getPrice());
+            System.out.println("입력 금액 = " + getPrice());
             System.out.println("10% 추가 금액 = " + addPrice);
-            System.out.println("가격 10% 추가 한 합산 가격 = " + (super.getPrice() + addPrice) + "원입니다.");
+            System.out.println("가격 10% 추가 한 합산 가격 = " + (getPrice() + addPrice) + "원입니다.");
         } else {
             super.calculatePrice();
         }
     }
-
-
-
 }
