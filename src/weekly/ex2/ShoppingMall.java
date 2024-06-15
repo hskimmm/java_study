@@ -1,6 +1,6 @@
 package weekly.ex2;
 
-public abstract class ShoppingMall {
+public class ShoppingMall {
     //4-2까지 완료
     private Product[] products;
 
