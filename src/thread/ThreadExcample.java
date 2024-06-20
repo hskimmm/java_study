@@ -1,7 +1,7 @@
 package thread;
 
 public class ThreadExcample {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         /*
             프로세스와 스레드
             - 프로세스 : 운영체제로부터 자원을 할당받은 작업의 단위
@@ -34,7 +34,7 @@ public class ThreadExcample {
 
             스레드 사용방법
             - Thread 클래스를 상속 받는 방법
-            - Runnable 인터페이스를 구현 하는 방법
+            - Runnable 인터페이스를 구현 하는 방법(이 방법을 많이 사용한다.)
 
             스레드 생명주기
 
@@ -55,17 +55,39 @@ public class ThreadExcample {
             - CPU 점유권을 상실한 상태로, 특정 메서드 실행을 통해 Runnable 상태로 전환된다.
             - wait() 메소드로 Blocked 상태가 된 스레드는 notify() 메소드 호출 시 Runnable 상태로 전환된다.
             - sleep(시간) 메소드로 Bolocked 상태가 된 스레드는 지정된 시간이 지나면 Runnable 상태로 전환된다.
-
-
-
         */
 
         //Thread 상속 받는 방법
-        MyThread myThread = new MyThread();
+        MyThread myThread = new MyThread("스레드1");
+        MyThread myThread1 = new MyThread("스레드2");
+        MyThread myThread2 = new MyThread("스레드3");
+        MyThread myThread3 = new MyThread("스레드4");
+        MyThread myThread4 = new MyThread("스레드5");
+
+        /*
+            결과값이 순차적으로 나오는 것이 아닌 랜덤으로 나온다.
+            그래서, 스레드는 순차를 보장하지 않는다.
+            -> 순차적으로 동작할 시 동시성 이슈가 발생하지 않는다.
+               이렇게 스레드가 동시에 실행 되어 랜덤으로 출력이 되어 동시성 이슈가 발생을 한다.
+        */
         myThread.start(); // 스레드 시작
+        myThread1.start(); // 스레드 시작
+        myThread2.start(); // 스레드 시작
+        myThread3.start(); // 스레드 시작
+        myThread4.start(); // 스레드 시작
 
         //Runnable 인터페이스 구현 방법
-        Thread thread = new Thread(new MyRunnable());
-        thread.start(); // 스레드 시작
+        Thread thread1 = new Thread(new MyRunnable(1));
+        Thread thread2 = new Thread(new MyRunnable(2));
+        Thread thread3 = new Thread(new MyRunnable(3));
+        Thread thread4 = new Thread(new MyRunnable(4));
+        Thread thread5 = new Thread(new MyRunnable(5));
+
+        thread1.start(); // 스레드 시작
+        thread2.start(); // 스레드 시작
+        thread3.start(); // 스레드 시작
+        Thread.sleep(10000); //10초 지연으로 Blocked 상태를 만듬
+        thread4.start(); // 스레드 시작
+        thread5.start(); // 스레드 시작
     }
 }
