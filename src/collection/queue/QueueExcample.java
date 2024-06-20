@@ -21,10 +21,12 @@ public class QueueExcample {
         queue.offer(new Message("sendMail", "kim"));
         queue.offer(new Message("sendSMS", "lee"));
         queue.offer(new Message("sendKaKaoTalk", "park"));
+        queue.offer(new Message("anything", "young"));
 
         //출력 -> 먼저 추가한 객체가 먼저 출력된다.
         while (!queue.isEmpty()) {
             Message message = queue.poll();
+//            Message message = queue.peek(); //제일 처음 들어간 객체가 나온다.
 
             switch (message.getCommend()) {
                 case "sendMail":
@@ -35,6 +37,9 @@ public class QueueExcample {
                     break;
                 case "sendKaKaoTalk":
                     System.out.println(message.getTo() + "에게 카톡을 보냅니다.");
+                    break;
+                default:
+                    System.out.println(message.getTo() + "에게 아무거나 보냅니다.");
                     break;
             }
         }

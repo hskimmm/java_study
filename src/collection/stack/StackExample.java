@@ -23,6 +23,7 @@ public class StackExample {
 
         while (!stack.isEmpty()) {
             Coin coin = stack.pop();
+//            Coin coin = stack.peek(); //제일 마지막에 들어온 객체가 나온다.
             System.out.println("꺼내온 동전 = " + coin.getValue() + "원"); //4,3,2,1 -> 마지막에 넣은 객체가 먼저 나간다.
         }
     }
